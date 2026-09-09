@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+class Complex {
+float r, i;
+public:
+Complex(float a = 0, float b = 0) {
+r = a;
+i = b;
+}
+void input() {
+cin >> r >> i;
+}
+void display() {
+cout << r << " + " << i << "i\n";
+}
+Complex add(Complex c) {
+return Complex(r + c.r, i + c.i);
+}
+Complex sub(Complex c) {
+return Complex(r - c.r, i - c.i);
+}
+Complex mul(Complex c) {
+return Complex(r*c.r - i*c.i, r*c.i + i*c.r);
+}
+Complex div(Complex c) {
+float d = c.r*c.r + c.i*c.i;
+return Complex((r*c.r + i*c.i)/d,
+(i*c.r - r*c.i)/d);
+
+}
+Complex conj() {
+return Complex(r, -i);
+}
+};
+int main() {
+Complex a, b, x;
+cout << "Enter two complex numbers (real imag): ";
+a.input();
+b.input();
+x = a.add(b);
+cout << "Add: "; x.display();
+x = a.sub(b);
+cout << "Subtract: "; x.display();
+x = a.mul(b);
+cout << "Multiply: "; x.display();
+x = a.div(b);
+cout << "Divide: "; x.display();
+x = a.conj();
+cout << "Conjugate: "; x.display();
+return 0;
+}
